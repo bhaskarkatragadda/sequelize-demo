@@ -1,7 +1,7 @@
-const Author = require('../models/author');
-const Book = require('../models/book');
-const Loan = require('../models/loan');
-const Member = require('../models/member');
+import Author from '../models/author.js';
+import Book from '../models/book.js';
+import Loan from '../models/loan.js';
+import Member from '../models/member.js';
 const setUpAssociations = () => {
  
     Author.hasMany(Book, { foreignKey: 'authorId', as: 'books'});
@@ -11,4 +11,4 @@ const setUpAssociations = () => {
     Loan.belongsTo(Member, { foreignKey: 'memberId' });
 }
 
-module.exports = setUpAssociations;
+export default setUpAssociations;

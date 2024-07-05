@@ -1,6 +1,6 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const Author = require('./author');
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js'
+import Author from './author.js'
 
 const Book = sequelize.define('Book', {
   id: {
@@ -29,4 +29,4 @@ const Book = sequelize.define('Book', {
   publicationYear: DataTypes.INTEGER,
 });
 
-module.exports = Book;
+export default Book;

@@ -1,9 +1,11 @@
 
-const express = require('express');
+import express from 'express';
 const app = express();
-const sequelize = require('./config/database');
-const setUpAssociations = require('./config/associations');
-const authorRoutes = require('./routes/author.routes');
+import sequelize from './config/database.js';
+import setUpAssociations from './config/associations.js';
+import authorRoutes from './routes/author.routes.js';
+
+
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded requests
 app.use(express.json()); // Middleware to parse JSON requests
 
@@ -12,10 +14,10 @@ async function initializeDatabase() {
     try {
       await sequelize.authenticate();
       console.log('Connection has been established successfully.');
-      // relationships
+
       setUpAssociations()
-       // Sync all models with the database (create tables if they don't exist)
-      await sequelize.sync({ force: true });
+    
+      await sequelize.sync({alter: true});
       console.log('All models were synchronized successfully.');
     } catch (error) {
       console.error('Unable to connect to the database or sync models:', error);

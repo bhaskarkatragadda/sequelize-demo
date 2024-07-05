@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const Author = require('../models/author');
+import Author from '../models/author.js';
 
 // Get all authors
 router.get('/', async (req, res) => {
@@ -64,4 +64,4 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

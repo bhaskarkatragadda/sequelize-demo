@@ -39,6 +39,7 @@ app.use('/api/ping', ((req, res) => {
     res.json({ message: 'pong' });
 }));
 
+app.use('/api/authors',authorRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
